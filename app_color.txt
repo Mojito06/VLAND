@@ -1,0 +1,11 @@
+Référennces colorimétrique de l'application:
+  
+  - dégradé bleu de fond :  bleu foncé (#00229c)  -->  bleu (#0b6dd9)
+  
+  - dégradé vert (france) :  vert (#089c1d)  -->  vert clair (#0ffa30)
+  
+  - dégradé jaune (france) :  jaune (#979910)  -->  jaune clair (#ecf018)
+  
+  - dégradé rouge (france) : rouge foncé (#9c1d10)  -->  rouge (#eb2e1a)
+  
+  - jaune Titre : #ecf018
