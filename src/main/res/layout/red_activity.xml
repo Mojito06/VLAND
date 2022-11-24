@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/jourj"
+        android:id="@+id/button_jour1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#898989"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.156" />
 
     <Button
-        android:id="@+id/jour1"
+        android:id="@+id/button_jour2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#898989"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.156" />
 
     <Button
-        android:id="@+id/jour2"
+        android:id="@+id/button_jour3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#898989"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.253" />
 
     <Button
-        android:id="@+id/jour3"
+        android:id="@+id/button_jour4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#898989"
