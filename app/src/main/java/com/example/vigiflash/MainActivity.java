@@ -8,4 +8,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+    public void buttonJour2 (View v) {
+        startActivity(red_activity) ;
+    }
 }
