@@ -9,10 +9,12 @@ import java.io.*;
 import java.net.*;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import java.time.LocalDate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
         Intent switchActivityIntent = new Intent(this, RedActivity.class);
         startActivity(switchActivityIntent);
     }
+    public static int[] dvalues = new int[4];
+    public String[] jours = new String[4];
+    public static int[] getDvalues() {
+        return dvalues;
+    }
 
     public class TestAsyncTask extends AsyncTask<Void, Void, String> {
         private Context mContext;
@@ -84,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String strings) {
             super.onPostExecute(strings);
         }
+
 
         private void getJSON(String url) {
             try {
@@ -115,15 +123,43 @@ public class MainActivity extends AppCompatActivity {
                 String jsonText = sb.toString();
 
                 JSONObject json = new JSONObject(jsonText);
-
                 // On récupére Le jour et le day value de la chaine de charactère jsonText
                 JSONArray signals = json.getJSONArray("signals");
                 for (int i = 0; i < signals.length(); i++) {
                     JSONObject signal = signals.getJSONObject(i);
-                    String jour = signal.getString("jour");
+                    String date = signal.getString("jour");
+                    String jour = date.substring(0, 10);
                     int dvalue = signal.getInt("dvalue");
-                    System.out.println("Jour: " + jour + ", alerte niveau : " + dvalue);
+                    LocalDate today = LocalDate.now();
+                    ///System.out.println("Jour: " + jour + ", alerte niveau : " + dvalue);
+
+                    if (jour.equals("2023-01-04")) {
+                        dvalues[0] = dvalue;
+                        jours[0] = jour;
+                        System.out.println("l'alerte est de niveau : " + dvalues[0] + " pour le jour : " + jours[0]);
+                    }
+                    if (jour.equals("2023-01-05")) {
+                        dvalues[1] = dvalue;
+                        jours[1] = jour;
+                        System.out.println("l'alerte est de niveau : " + dvalues[1] + " pour le jour : " + jours[1]);
+                    }
+                    if (jour.equals("2023-01-06")) {
+                        dvalues[2] = dvalue;
+                        jours[2] = jour;
+                        System.out.println("l'alerte est de niveau : " + dvalues[2] + " pour le jour : " + jours[2]);
+                    }
+                    if (jour.equals("2023-01-07")) {
+                        dvalues[3] = dvalue;
+                        jours[3] = jour;
+                        System.out.println("l'alerte est de niveau : " + dvalues[3] + " pour le jour : " + jours[3]);
+                    }
+                    ///if (jour.equals(today)) {
+                    ///    dvalues[0] = dvalue;
+                    ///    jour1 = jour;
+                    ///    System.out.println("l'alerte est de niveau : " + dvalue1 + " pour le jour : " + jour1);
+                    ///}
                 }
+
             }
             catch(Exception ex) {
                 ex.printStackTrace();
