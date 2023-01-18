@@ -27,6 +27,7 @@ public class GreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.green_activity);
 
+        // Changement du text dans le button pour afficher la date du jour
         Button button1 = findViewById(R.id.button_jour1);
         Button button2 = (Button)findViewById(R.id.button_jour2);
         Button button3 = (Button)findViewById(R.id.button_jour3);
@@ -38,6 +39,7 @@ public class GreenActivity extends AppCompatActivity {
         button4.setText(Jour4.date);
     }
 
+    // Test du dvalue pour changer l'activité en fonction
     public void buttonJour1(View v) {
         if (Jour1.value == 1) {
             switchGreenActivities();
@@ -85,7 +87,7 @@ public class GreenActivity extends AppCompatActivity {
             switchRedActivities();
         }
     }
-
+    // changement d'activité
     private void switchGreenActivities() {
         //setContentView(R.layout.green_activity);
         Intent switchActivityIntent = new Intent(this, GreenActivity.class);

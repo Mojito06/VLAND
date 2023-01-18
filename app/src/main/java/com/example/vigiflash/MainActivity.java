@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Creation des objets pour chaque jours.
     public static Jour Jour1 = new Jour();
     public static Jour Jour2 = new Jour();
     public static Jour Jour3 = new Jour();
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //Lancement de la requête sur le site pour récupérer les données JSON
         try {
             TestAsyncTask testAsyncTask = new TestAsyncTask(MainActivity.this, "http://isis.unice.fr/~pl105229/ext/sae302/db.php");
             testAsyncTask.execute();
@@ -102,11 +103,13 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject day3 = signals.getJSONObject(2);
                 JSONObject day4 = signals.getJSONObject(3);
 
+                // On donne la valeur du dvalue qui correspond a chaque jour
                 Jour1.value = day1.getInt("dvalue");
                 Jour2.value = day2.getInt("dvalue");
                 Jour3.value = day3.getInt("dvalue");
                 Jour4.value = day4.getInt("dvalue");
 
+                // On donne la date qui correspond au bon jour
                 String date1 = day1.getString("jour");
                 String theDate1 = date1.substring(0, 10);
                 String date2 = day2.getString("jour");
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 Jour3.date = theDate3;
                 Jour4.date = theDate4;
 
+                // Test du dvalue pour changer l'activité en fonction
                 if (Jour1.value == 1) {
                     System.out.println(Jour1.value);
                     switchGreenActivities();
@@ -131,51 +135,16 @@ public class MainActivity extends AppCompatActivity {
                 if (Jour1.value == 3) {
                     switchRedActivities();
                 }
-                //for (int i = 0; i < signals.length(); i++) {
-                    //JSONObject signal = signals.getJSONObject(i);
-                //  String date = signal.getString("jour");
-                //   String jour = date.substring(0, 10);
-                //  int dvalue = signal.getInt("dvalue");
-                //  LocalDate today = LocalDate.now();
-                    ///System.out.println("Jour: " + jour + ", alerte niveau : " + dvalue);
-
-                //   if (jour.equals("2023-01-04")) {
-                        //       dvalues[0] = dvalue;
-                //   jours[0] = jour;
-                //    System.out.println("l'alerte est de niveau : " + dvalues[0] + " pour le jour : " + jours[0]);
-                // }
-                // if (jour.equals("2023-01-05")) {
-                //     dvalues[1] = dvalue;
-                //      jours[1] = jour;
-                //      System.out.println("l'alerte est de niveau : " + dvalues[1] + " pour le jour : " + jours[1]);
-                //   }
-                //   if (jour.equals("2023-01-06")) {
-                //      dvalues[2] = dvalue;
-                //      jours[2] = jour;
-                ////      System.out.println("l'alerte est de niveau : " + dvalues[2] + " pour le jour : " + jours[2]);
-                //}
-                //  if (jour.equals("2023-01-07")) {
-                //      dvalues[3] = dvalue;
-                //      jours[3] = jour;
-                //      System.out.println("l'alerte est de niveau : " + dvalues[3] + " pour le jour : " + jours[3]);
-                //  }
-                //  ///if (jour.equals(today)) {
-                    ///    dvalues[0] = dvalue;
-                    ///    jour1 = jour;
-                    ///    System.out.println("l'alerte est de niveau : " + dvalue1 + " pour le jour : " + jour1);
-                    ///}
-                // }
-
             }
             catch(Exception ex) {
                 ex.printStackTrace();
-                System.out.println("bruh");
 
             }
 
         }
 
     }
+        // Même chose pour chaque buttton
     public void buttonJour1 (View v) {
         if (Jour1.value == 1) {
             switchGreenActivities();
@@ -223,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             switchRedActivities();
         }
     }
-
+        // changement d'activité
     private void switchGreenActivities() {
         //setContentView(R.layout.green_activity);
         Intent switchActivityIntent = new Intent(this, GreenActivity.class);
