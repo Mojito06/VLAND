@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/jaune2"
-    tools:context=".YellowActivity">
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button_jour2"
@@ -57,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#898989"
+        android:onClick="buttonJour4"
         android:text="J+3"
         app:iconTint="#EAED18"
         app:layout_constraintBottom_toBottomOf="parent"
