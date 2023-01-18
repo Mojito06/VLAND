@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+
 import java.io.*;
 import java.net.*;
 import org.json.JSONObject;
@@ -19,10 +21,21 @@ import java.time.LocalDate;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GreenActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.green_activity);
+
+        Button button1 = findViewById(R.id.button_jour1);
+        Button button2 = (Button)findViewById(R.id.button_jour2);
+        Button button3 = (Button)findViewById(R.id.button_jour3);
+        Button button4 = (Button)findViewById(R.id.button_jour4);
+
+        button1.setText(Jour1.date);
+        button2.setText(Jour2.date);
+        button3.setText(Jour3.date);
+        button4.setText(Jour4.date);
     }
 
     public void buttonJour1(View v) {
